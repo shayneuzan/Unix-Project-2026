@@ -2,7 +2,7 @@ services:
   www:
     image: php:8.2-apache
     volumes:
-      - "./app/:/var/www/html"
+      - "./app/public/:/var/www/html"
 
     container_name: todo-app
 
