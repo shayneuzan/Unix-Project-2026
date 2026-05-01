@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
 
     volumes:
-      - "./app/public/:/var/www/html"
+      - "./app/:/var/www/html"
 
     container_name: todo-app
 
@@ -15,6 +15,9 @@ services:
 
     networks:
       - todo-network
+
+    depends_on:
+      - db
 
   db:
     image: mariadb:latest

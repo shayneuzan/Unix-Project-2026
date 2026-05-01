@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php
+require_once 'includes/db-connection.php';
+
+$query = "SELECT * FROM tasks";
+$stmt = $pdo->prepare($query);
+$stmt->execute();
+$tasks = $stmt->fetchAll();
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,26 +32,15 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>
-            <!-- Sample rows for a design preview -->
+	<tbody>
+	<?php foreach($tasks as $task){ ?>
             <tr>
-                <td>Finish the Unix project</td>
-                <td><span class="badge bg-warning text-dark">Pending</span></td>
-                <td>Apr 30</td>
+	    <td><?= $task['title']; ?> </td>
+	    <td><span class="badge bg-warning text-dark"><?= $task['completed']; ?> </span></td>
+	    <td><?= $task['created_at'] ?></td>
                 <td><button class="btn btn-danger btn-sm">Delete</button></td>
             </tr>
-            <tr>
-                <td>Set up Docker containers</td>
-                <td><span class="badge bg-success">Done</span></td>
-                <td>Apr 29</td>
-                <td><button class="btn btn-danger btn-sm">Delete</button></td>
-            </tr>
-            <tr>
-                <td>Design frontend with Bootstrap</td>
-                <td><span class="badge bg-warning text-dark">Pending</span></td>
-                <td>Apr 30</td>
-                <td><button class="btn btn-danger btn-sm">Delete</button></td>
-            </tr>
+    	<?php } ?>
         </tbody>
     </table>
 </div>
