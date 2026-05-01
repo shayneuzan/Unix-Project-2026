@@ -32,15 +32,15 @@ $tasks = $stmt->fetchAll();
                 <th>Action</th>
             </tr>
         </thead>
-	<tbody>
-	<?php foreach($tasks as $task){ ?>
+        <tbody>
+            <?php foreach($tasks as $task){ ?>
             <tr>
-	    <td><?= $task['title']; ?> </td>
-	    <td><span class="badge bg-warning text-dark"><?= $task['completed']; ?> </span></td>
-	    <td><?= $task['created_at'] ?></td>
-                <td><button class="btn btn-danger btn-sm">Delete</button></td>
+                <td><?= $task['title']; ?></td>
+                <td><span class="badge bg-warning text-dark"><?= $task['completed']; ?></span></td>
+                <td><?= $task['created_at'] ?></td>
+                <td><a href="delete.php?id=<?= $task['id'] ?>" class="btn btn-danger btn-sm">Delete</a></td>
             </tr>
-    	<?php } ?>
+            <?php } ?>
         </tbody>
     </table>
 </div>
