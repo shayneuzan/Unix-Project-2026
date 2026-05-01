@@ -1,6 +1,9 @@
 services:
-  www:
-    image: php:8.2-apache
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
     volumes:
       - "./app/public/:/var/www/html"
 
@@ -9,6 +12,10 @@ services:
     ports:
       - 80:80
       - 443:443
+
+    networks:
+      - todo-network
+
   db:
     image: mariadb:latest
 
@@ -29,6 +36,13 @@ services:
     ports:
       - "3307:3306"
 
+    networks:
+      - todo-network 
+
 volumes:
   mariadb_data:
 
+
+networks:
+  todo-network:
+    driver: bridge
