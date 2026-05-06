@@ -38,7 +38,10 @@ $tasks = $stmt->fetchAll();
                 <td><?= $task['title']; ?></td>
                 <td><span class="badge bg-warning text-dark"><?= $task['completed']; ?></span></td>
                 <td><?= $task['created_at'] ?></td>
-                <td><a href="delete.php?id=<?= $task['id'] ?>" class="btn btn-danger btn-sm">Delete</a></td>
+                <td>
+                    <a href="delete.php?id=<?= $task['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                    <a href="toggle.php?id=<?= $task['id'] ?>" class="btn btn-warning">Toggle</a>
+                </td>
             </tr>
             <?php } ?>
         </tbody>
